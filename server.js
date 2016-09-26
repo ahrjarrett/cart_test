@@ -5,6 +5,9 @@ var express = require('express'),
     engine = require('ejs-mate'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
+    session = require('express-session'),
+    cookieParser = require('cookie-parser'),
+    flash = require('express-flash'),
 
     port = 3000,
     User = require('./models/user');
@@ -19,10 +22,19 @@ mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', fu
 });
 
 
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(cookieParser());
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'secretsecret'
+}));
+app.use(flash());
+
+
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 

@@ -3,12 +3,21 @@
 <div class="row">
   <div class="col-lg-6 col-md-offset-3 signup">
 
+    <% if (errors.length > 0) { %>
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= errors %>
+      </div>
+    <% } %>
+
     <form method="post">
 
       <div class="app-signup">
         <input type="text" class="form-control" name="name" placeholder="Your name">
         <input type="text" class="form-control" name="email" placeholder="Email address">
-        <input type="text" class="form-control" name="password" placeholder="Password" type="password">
+        <input type="password" class="form-control" name="password" placeholder="Password">
         <input class="submit button signup btn btn-lg btn-success" type="submit" id="submit_button" value="Sign up">
       </div>
           
