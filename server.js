@@ -9,11 +9,11 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     flash = require('express-flash'),
 
-    port = 3000,
+    secret = require('./config/secret'),
     User = require('./models/user');
 
 
-mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', function(err) {
+mongoose.connect(secret.database, function(err) {
     if (err) {
         console.log(err);
     } else {
@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: 'secretsecret'
+    secret: secret.secretKey
 }));
 app.use(flash());
 
@@ -45,8 +45,8 @@ app.use(mainRoutes);
 app.use(userRoutes);
 
 
-app.listen(port, function(err) {
+app.listen(secret.port, function(err) {
     if(err) throw err;
-    console.log('Server is running on port ' + port);
+    console.log('Server is running on port ' + secret.port);
 });
 
