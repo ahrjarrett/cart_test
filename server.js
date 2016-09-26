@@ -1,10 +1,13 @@
 var express = require('express'),
-    app = express(),
+    bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
-    port = 3000;
 
-// mongoLab user and password below
+    port = 3000,
+    User = require('./models/user');
+
+var app = express();
+
 mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', function(err) {
     if (err) {
         console.log(err);
@@ -14,9 +17,20 @@ mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', fu
 });
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function(req, res){
-    res.json('json response from server.js');
+app.post('/create-user', function(req, res, next) {
+    var user = new User();
+
+    user.profile.name = req.body.name;
+    user.password = req.body.password;
+    user.email = req.body.email;
+
+    user.save(function(err) {
+        if (err) return next(err);
+        res.json('Successfully created a new user: ' + user.profile.name);
+    });
 });
 
 app.listen(port, function(err) {

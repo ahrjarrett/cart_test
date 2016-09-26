@@ -15,17 +15,14 @@ var UserSchema = new Schema({
     history: [{
         date: Date,
         paid: { type: Number, default: 0 }
-        // item: { type: Schema.Types.ObjectId, ref: ''}
     }]
 });
 
 UserSchema.pre('save', function(next) {
-    // this refers to the User instance
     var user = this;
     if(!user.isModified('password')) return next();
-    bcrypt.getSalt(10, function(err, salt) {
+    bcrypt.genSalt(10, function(err, salt) {
         if (err) return next(err);
-        // 3rd parameter is 'progress', lets you do something like log
         bcrypt.hash(user.password, salt, null, function(err, hash) {
             if (err) return next(err);
             user.password = hash;
