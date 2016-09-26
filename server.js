@@ -21,7 +21,7 @@ mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', fu
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
