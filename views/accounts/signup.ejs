@@ -1,15 +1,17 @@
 <% layout('layout') %>
 
 <div class="row">
-  <div class="col-lg-6 col-md-offset-3">
+  <div class="col-lg-6 col-md-offset-3 signup">
 
     <form method="post">
 
-      <div>
-        <input type="text" class="form-control" name="name">
-        <input type="text" class="form-control" name="email">
-        <input type="text" class="form-control" name="password">
+      <div class="app-signup">
+        <input type="text" class="form-control" name="name" placeholder="Your name">
+        <input type="text" class="form-control" name="email" placeholder="Email address">
+        <input type="text" class="form-control" name="password" placeholder="Password" type="password">
+        <input class="submit button signup btn btn-lg btn-success" type="submit" id="submit_button" value="Sign up">
       </div>
+
           
     </form>
   </div>

@@ -1,0 +1,16 @@
+.signup {
+	text-align: center;
+}
+
+.app-signup input {
+	margin: 0 auto;
+	margin-bottom: 4px;
+}
+
+.app-signup input.submit {
+	min-width: 100%;
+}
+
+.app-signup {
+	text-align: center;
+}
