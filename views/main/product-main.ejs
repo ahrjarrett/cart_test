@@ -23,16 +23,18 @@
 		</div>
 		<% } %>
 
-		<ul class="pagination text-center">
-			<li>
-				<% for(var i = 1; i <= pages; i++) { %>
-					<% if (i === 1) { %>
-						<li><a href="/"><%= i %></a>
-					<% } else { %>
-						<li><a href="/page/<%= i %>"><%= i %></a>
+		<div class="text-center">
+			<ul class="pagination">
+				<li>
+					<% for(var i = 1; i <= pages; i++) { %>
+						<% if (i === 1) { %>
+							<li><a href="/"><%= i %></a>
+						<% } else { %>
+							<li><a href="/page/<%= i %>"><%= i %></a>
+						<% } %>
 					<% } %>
-				<% } %>
-			</li>
-		</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
