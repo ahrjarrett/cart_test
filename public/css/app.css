@@ -1,7 +1,6 @@
 .user-profile {
 	margin-top: 80px;
 	margin-bottom: 100px;
-	text-align: center;
 }
 
 .signup {
@@ -21,4 +20,8 @@
 
 .app-signup {
 	text-align: center;
+}
+
+.gravatar {
+	margin: 20px;
 }

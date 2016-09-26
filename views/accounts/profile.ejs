@@ -1,3 +1,24 @@
 <% layout('layout') -%>
 
-<h1 class="user-profile logged-in"> Hello, <%= user.profile.name %> </h1>
+<div class="container">
+	<div class="row user-profile">
+		<div class="col-sm-6 col-md-4">
+			<img class="img-circle img-responsive img-center gravatar" src="<%= user.profile.picture %>" alt="<%= user.profile.name %>">
+
+			<p>Name: <%= user.profile.name %></p>
+			<p>Email: <%= user.email %></p>
+
+			<% if (user.address === '' || typeof user.address === 'undefined') { %>
+				<p>Address: You have no address</p>
+			<% } else { %> 
+				<p>Address: <%= user.address %></p>
+			<% } %>
+
+			<a href="/edit-profile" class="submit button btn btn-lg btn-info"> Edit your profile</a>
+
+		</div>
+	</div>		
+</div>
+
+
+<!--<h1 class="user-profile logged-in"> Hello, <%= user.profile.name %> </h1>-->
