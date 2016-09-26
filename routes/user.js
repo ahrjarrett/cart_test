@@ -43,7 +43,10 @@ router.post('/signup', function(req, res, next) {
             user.save(function(err, user) {
                 if (err) return next(err);
 
-                return res.redirect('/');
+                req.logIn(user, function(err) {
+                    if (err) return next(err);
+                    res.redirect('/profile');
+                });
             });
         }
     });
