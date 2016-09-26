@@ -1,0 +1,17 @@
+<% layout('layout') -%>
+<div class="clearfix"></div>
+<div class="container product-container">
+	<div class="row">
+
+		<div class="col-md-8 product-img">
+			<img src="<%= product.image %>">
+		</div>
+
+		<div class="col-md-4">
+			<h3><%= product.name %></h3>
+			<h1>$<%= product.price %></h1>
+
+		</div>
+
+	</div>
+</div>

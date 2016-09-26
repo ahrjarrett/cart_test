@@ -25,3 +25,10 @@
 .gravatar {
 	margin: 20px;
 }
+
+.product-container {
+	margin: 40px 0;
+}
+.product-img img {
+	max-width: 100%;
+}
