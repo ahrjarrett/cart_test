@@ -32,3 +32,8 @@
 .product-img img {
 	max-width: 100%;
 }
+
+.jumbotron {
+	background-color: rgb(246, 249, 252);
+	margin-top: 20px;
+}

@@ -1,6 +1,13 @@
+<form class="navbar-form navbar-left navbar-search method="post" action="/search">
+  <div class="form-group">
+    <input type="text" name="q" class="form-control" placeholder="Search">
+    <button class="btn btn-success" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+  </div>
+</form>
+
 <nav>
   <ul class="nav nav-pills pull-right">
-    <li><a class="categories-dropdown dropdown-toggle" data-toggle="dropdown" href="#"> Categories </a>
+    <li><a class="categories-dropdown dropdown-toggle" data-toggle="dropdown" href="#"> Categories <span class="glyphicon glyphicon-chevron-down"></span> </a>
       <ul class="dropdown-menu">
         <% for (var i = 0; i < categories.length; i++) { %>
           <li><a href="/products/<%= categories[i]._id%>"><%= categories[i].name %></a></li>
@@ -9,12 +16,12 @@
     </li>
 
     <% if (!user) { %>
-    <li role="presentation"><a href="/">Home</a></li>
+    <!--<li role="presentation"><a href="/">Home</a></li>-->
     <li role="presentation"><a href="/login">Login</a></li>
     <li role="presentation" class="active"><a href="/signup">Signup</a></li>
 
     <% } else { %>
-    <li role="presentation"><a href="/">Home</a></li>
+    <!--<li role="presentation"><a href="/">Home</a></li>-->
     <li role="presentation"><a href="/profile"><%= user.profile.name %></a></li>
     <li role="presentation" class="active"><a href="/logout">Logout</a></li>
     <% } %>
