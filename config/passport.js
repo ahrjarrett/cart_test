@@ -1,16 +1,16 @@
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy();
+var LocalStrategy = require('passport-local').Strategy;
 
-// serial and deserialize
+// serialize and deserialize
 passport.serializeUser(function(user, done) {
 	done(null, user._id);
 });
+
 passport.deserializeUser(function(id, done) {
 	User.findById(id, function(err, user) {
 		done(err, user);
 	});
 });
-
 
 // middleware
 passport.use('local-login', new LocalStrategy({
@@ -22,21 +22,20 @@ passport.use('local-login', new LocalStrategy({
 		if (err) return done(err);
 
 		if (!user) {
-			return done(null, false, req.flash('loginMessage', 'No user found'));
+			return done(null, false, req.flash('loginMessage', 'No user has been found'));
 		}
 
 		if (!user.comparePassword(password)) {
-			return done(null, false, req.flash('loginMessage', 'Oops, wrong password'));
+			return done(null, false, req.flash('loginMessage', 'Oops! Wrong Password pal'));
 		}
 		return done(null, user);
 	});
 }));
 
-
-// custom function to validate
+// custom valiation function
 exports.isAuthenticated = function(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	}
 	res.redirect('/login');
-};
+}

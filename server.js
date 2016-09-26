@@ -8,7 +8,7 @@ var express = require('express'),
     session = require('express-session'),
     cookieParser = require('cookie-parser'),
     flash = require('express-flash'),
-    MongoStore = require('connect-mongo')(session),
+    MongoStore = require('connect-mongo/es5')(session),
     passport = require('passport'),
 
     secret = require('./config/secret'),
