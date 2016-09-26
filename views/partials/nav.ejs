@@ -1,17 +1,25 @@
 <nav>
-  <% if (!user) { %>
-    <ul class="nav nav-pills pull-right">
-      <li role="presentation"><a href="/">Home</a></li>
-      <li role="presentation"><a href="/login">Login</a></li>
-      <li role="presentation" class="active"><a href="/signup">Signup</a></li>
-    </ul>
-  <% } else { %>
-    <ul class="nav nav-pills pull-right">
-      <li role="presentation"><a href="/">Home</a></li>
-      <li role="presentation"><a href="/profile"><%= user.profile.name %></a></li>
-      <li role="presentation" class="active"><a href="/logout">Logout</a></li>
-    </ul>
+  <ul class="nav nav-pills pull-right">
+    <li><a class="categories-dropdown dropdown-toggle" data-toggle="dropdown" href="#"> Categories </a>
+      <ul class="dropdown-menu">
+        <% for (var i = 0; i < categories.length; i++) { %>
+          <li><a href="#"><%= categories[i].name %></a></li>
+        <% } %>
+      </ul>
+    </li>
 
-  <% } %>
+    <% if (!user) { %>
+    <li role="presentation"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/login">Login</a></li>
+    <li role="presentation" class="active"><a href="/signup">Signup</a></li>
+
+    <% } else { %>
+    <li role="presentation"><a href="/">Home</a></li>
+    <li role="presentation"><a href="/profile"><%= user.profile.name %></a></li>
+    <li role="presentation" class="active"><a href="/logout">Logout</a></li>
+    <% } %>
+
+  </ul>
+
 
 </nav>

@@ -12,6 +12,7 @@ var express = require('express'),
     passport = require('passport'),
 
     secret = require('./config/secret'),
+    Category = require('./models/category'),
     User = require('./models/user');
 
 
@@ -22,7 +23,6 @@ mongoose.connect(secret.database, function(err) {
         console.log('Connected to the database');
     }
 });
-
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -41,6 +41,14 @@ app.use(passport.session());
 app.use(function(req, res, next) {
     res.locals.user = req.user;
     next();
+});
+
+app.use(function(req, res, next) {
+    Category.find({}, function(err, categories) {
+        if (err) return next(err);
+        res.locals.categories = categories;
+        next();
+    })
 });
 
 app.engine('ejs', engine);
