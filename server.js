@@ -1,5 +1,7 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
+    ejs = require('ejs'),
+    engine = require('ejs-mate'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
 
@@ -19,6 +21,14 @@ mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', fu
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.engine('ejs', engine);
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res){
+
+    res.render('home');
+
+});
 
 app.post('/create-user', function(req, res, next) {
     var user = new User();
