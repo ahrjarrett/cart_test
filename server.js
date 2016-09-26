@@ -1,4 +1,5 @@
 var express = require('express'),
+    app = express(),
     bodyParser = require('body-parser'),
     ejs = require('ejs'),
     engine = require('ejs-mate'),
@@ -8,7 +9,6 @@ var express = require('express'),
     port = 3000,
     User = require('./models/user');
 
-var app = express();
 
 mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', function(err) {
     if (err) {
@@ -18,6 +18,7 @@ mongoose.connect('mongodb://root:Swear!23@ds041556.mlab.com:41556/cart_test', fu
     }
 });
 
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,26 +26,12 @@ app.use(express.static(__dirname + '/public'));
 app.engine('ejs', engine);
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res){
-    res.render('main/home');
-});
+var mainRoutes = require('./routes/main');
+var userRoutes = require('./routes/user');
 
-app.get('/about', function(req, res){
-    res.render('main/about');
-});
+app.use(mainRoutes);
+app.use(userRoutes);
 
-app.post('/create-user', function(req, res, next) {
-    var user = new User();
-
-    user.profile.name = req.body.name;
-    user.password = req.body.password;
-    user.email = req.body.email;
-
-    user.save(function(err) {
-        if (err) return next(err);
-        res.json('Successfully created a new user: ' + user.profile.name);
-    });
-});
 
 app.listen(port, function(err) {
     if(err) throw err;
