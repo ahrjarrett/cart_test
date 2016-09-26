@@ -14,6 +14,10 @@ router.post('/login', passport.authenticate('local-login', {
     failureFlash: true
 }));
 
+router.get('/profile', function(req, res) {
+    res.json(req.user);
+});
+
 router.get('/signup', function(req, res, next) {
     res.render('accounts/signup', {
         errors: req.flash('errors') 
