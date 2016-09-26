@@ -2,6 +2,6 @@
 
 setting up cart with mongoose, stripe
 
-### current: finished 025
+### current: finished 028
 
-~~old: left off coding on video 011 user scheme from chapter 2~~
+1. fix 'undefined' value in /profile address input upon signup
