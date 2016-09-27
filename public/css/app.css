@@ -37,3 +37,25 @@
 	background-color: rgb(246, 249, 252);
 	margin-top: 20px;
 }
+
+.shop-now {
+	margin-top: 10px;
+}
+
+.search-home {
+	display: inline;
+}
+.search-home button {
+	width: 100%;
+}
+
+.jumbotron input {
+	padding: 28px;
+}
+
+.search-input-wrap {
+	padding-right: 0;
+}
+/*.search-btn-wrap {
+	margin-left: -15px;
+}*/

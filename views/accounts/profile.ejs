@@ -9,13 +9,16 @@
 			<p>Email: <%= user.email %></p>
 
 			<% if (user.address === '' || typeof user.address === 'undefined') { %>
-				<p>Address: You have no address</p>
+				<p>Address: <a style="color:rgb(240, 81, 54); text-decoration:underline" href="/edit-profile">Add a shipping address</a></p>
 			<% } else { %> 
 				<p>Address: <%= user.address %></p>
 			<% } %>
 
 			<a href="/edit-profile" class="submit button btn btn-lg btn-info"> Edit your profile</a>
+			<a href="/" class="shop-now button btn btn-lg btn-success"> Shop now</a>				
 
+		</div>
+		<div class="col-sm-6 col-md-4">
 		</div>
 	</div>		
 </div>
