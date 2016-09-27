@@ -13,7 +13,9 @@ var express = require('express'),
 
     secret = require('./config/secret'),
     Category = require('./models/category'),
-    User = require('./models/user');
+    User = require('./models/user')
+    
+    cartLength = require('./middlewares/middlewares');
 
 
 mongoose.connect(secret.database, function(err) {
@@ -42,6 +44,8 @@ app.use(function(req, res, next) {
     res.locals.user = req.user;
     next();
 });
+
+app.use(cartLength);
 
 app.use(function(req, res, next) {
     Category.find({}, function(err, categories) {

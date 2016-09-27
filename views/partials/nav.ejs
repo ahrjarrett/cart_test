@@ -27,6 +27,17 @@
     <li role="presentation"><a href="/profile"><%= user.profile.name %></a></li>
     <li role="presentation" class="active"><a href="/logout">Logout</a></li>
     <% } %>
+
+    <% if (user) { %>
+      <li><a href="/cart" class="glyphicon glyphicon-shopping-cart">
+        <span class="badge"><%= cart %></span>
+      </a></li>
+    <% } else { %>
+      <li><a href="/cart" class="nav_cart glyphicon glyphicon-shopping-cart">
+        <span class="cart_length">0</span>
+      </a></li>
+    <% } %>
+
   </ul>
 </nav>
 <div class="clearfix"></div>

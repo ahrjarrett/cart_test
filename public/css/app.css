@@ -49,3 +49,11 @@
 }
 
 
+.nav_cart {
+	padding: 4px 0 4px 20px;
+	font-size: 1.5em;
+}
+.cart_length {
+	font-size: 1.5em;
+	font-family: Helvetica;
+}
