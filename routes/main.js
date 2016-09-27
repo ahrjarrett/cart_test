@@ -2,6 +2,8 @@ var router = require('express').Router();
 var Cart = require('../models/cart');
 var User = require('../models/user');
 var Product = require('../models/product');
+// insert secret key in stripe call below
+var stripe = require('stripe')('sk_test_I6B5QJhwJvqKGWygMUlcXxI5');
 
 function paginate(req, res, next) {
     var perPage = 9;
@@ -145,6 +147,24 @@ router.get('/product/:id', function(req, res, next) {
             product: product
         });
     });
+});
+
+router.post('/payment', function(req, res, next) {
+
+    var stripeToken = req.body.stripeToken;
+    var currentCharges = Math.round(req.body.stripeMoney * 100);
+    stripe.customers.create({
+        source: stripeToken
+    }).then(function(customer) {
+        return stripe.charges.create({
+            amount: currentCharges,
+            currency: 'usd',
+            customer: customer.id
+        });
+    });
+
+    res.redirect('/profile');
+    
 });
 
 module.exports = router;
