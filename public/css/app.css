@@ -42,20 +42,10 @@
 	margin-top: 10px;
 }
 
-.search-home {
-	display: inline;
-}
-.search-home button {
-	width: 100%;
-}
 
 .jumbotron input {
 	padding: 28px;
+	padding-left: 20px;
 }
 
-.search-input-wrap {
-	padding-right: 0;
-}
-/*.search-btn-wrap {
-	margin-left: -15px;
-}*/
+
