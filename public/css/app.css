@@ -106,3 +106,9 @@
 .credit-card-box .panel-heading img {
     min-width: 180px;
 }
+
+@media (min-width: 992px) {
+	.modal-card-form {
+		width: 55%;
+	}
+}
