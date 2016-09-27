@@ -2,6 +2,31 @@ $(function() {
 
   Stripe.setPublishableKey('pk_test_uRwtVdJxHItbSzIpIhuFx6Dr');
 
+	var spinOpts = {
+		lines: 13,
+		length: 28,
+		width: 14,
+		radius: 42,
+		scale: 0.25,
+		corners: 1,
+		color: '#000',
+		opacity: 0.25,
+		rotate: 21,
+		direction: 1,
+		speed: 1,
+		trail: 60,
+		fps: 20,
+		zIndex: 2e9,
+		className: 'spinner',
+		top: '50%',
+		left: '50%',
+		shadow: false,
+		hwaccel: false,
+		position: 'absolute'
+	};
+
+
+
 	$('#search').keyup(function(){
 		var search_term = $(this).val();
 
@@ -85,6 +110,10 @@ $(function() {
 			var token = response.id;
 			// Insert the token ID into the form so it gets submitted to the server:
 			$form.append($('<input type="hidden" name="stripeToken">').val(token));
+
+			var spinner = new Spinner(spinOpts).spin();
+			$('#loading').append(spinner.el);
+
 			$form.get(0).submit();
 		}
 	}
