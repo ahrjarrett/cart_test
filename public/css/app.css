@@ -42,7 +42,9 @@
 	margin-top: 10px;
 }
 
-
+.profile-btn {
+	width: 100%;
+}
 .jumbotron input {
 	padding: 28px;
 	padding-left: 20px;

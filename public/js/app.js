@@ -40,3 +40,37 @@ $(function(){
 		});
 	});
 });
+
+
+$(document).on('click', '#plus', function(e) {
+	e.preventDefault();
+	var priceValue = parseFloat($('#price_value').val());
+	var quantity = parseInt($('#quantity').val());
+
+	priceValue += parseFloat($('#price_hidden').val());
+	quantity += 1;
+
+	$('#quantity').val(quantity);
+	$('#price_value').val(priceValue.toFixed(2));
+	$('#total').html(quantity);
+});
+
+
+$(document).on('click', '#minus', function(e) {
+	e.preventDefault();
+	var priceValue = parseFloat($('#price_value').val());
+	var quantity = parseInt($('#quantity').val());
+
+	if(quantity == 1) {
+		priceValue = $('#price_hidden').val();
+		quantity = 1;
+	} else {
+		priceValue -= parseFloat($('#price_hidden').val());
+		quantity -= 1;
+	}
+
+	$('#quantity').val(quantity);
+	$('#price_value').val(priceValue.toFixed(2));
+	$('#total').html(quantity);
+});
+
