@@ -18,7 +18,24 @@
 			<a href="/" class="profile-btn shop-now button btn btn-lg btn-success"> Shop now</a>				
 
 		</div>
-		<div class="col-sm-6 col-md-4">
+		<div class="col-sm-6 col-md-6 col-md-offset-2">
+			<h2 class="text-center"> Purchase History </h2>
+			<table class="table table-striped sticky-header">
+				<thead>
+					<tr>
+						<th> Item Name </th>
+						<th> Paid: </th>
+					</tr>
+					<tbody>
+						<% for(var i = 0; i < user.history.length; i++) { %>
+							<tr>
+								<td><%= user.history[i].item.name %></td>
+								<td>$<%= user.history[i].paid %></td>
+							</tr>
+						<% } %>
+					</tbody>
+				</thead>
+			</table>
 		</div>
 	</div>		
 </div>
